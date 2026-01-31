@@ -1,91 +1,988 @@
-/* Gaya untuk Booking Widget */
-.booking-widget {
-    background-color: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(10px);
-    border-radius: 12px;
-    padding: 30px;
-    max-width: 900px;
-    margin: 40px auto;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Villa Seminyak - Villa Mewah Pribadi di Bali</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-.booking-widget h3 {
-    text-align: center;
-    color: #1a5276;
-    margin-bottom: 25px;
-    font-size: 24px;
-    font-weight: 400;
-}
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f7f4;
+        }
 
-.booking-form {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 20px;
-    align-items: end;
-}
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
+        /* Header & Navigation */
+        header {
+            background-color: rgba(255, 255, 255, 0.98);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            padding: 15px 0;
+        }
 
-.form-group label {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 8px;
-    font-weight: 500;
-}
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.form-group input,
-.form-group select {
-    padding: 14px 16px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 16px;
-    background-color: white;
-    transition: border 0.3s;
-}
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a5276;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
 
-.form-group input:focus,
-.form-group select:focus {
-    outline: none;
-    border-color: #c19a6b;
-}
+        .logo i {
+            color: #c19a6b;
+            margin-right: 10px;
+            font-size: 30px;
+        }
 
-.btn-booking {
-    grid-column: 1 / -1;
-    background-color: #1a5276;
-    border-color: #1a5276;
-    padding: 18px;
-    font-size: 18px;
-    margin-top: 10px;
-}
+        .logo span {
+            color: #c19a6b;
+        }
 
-.btn-booking:hover {
-    background-color: #15435f;
-}
+        nav {
+            display: flex;
+            align-items: center;
+        }
 
-.guarantee-note {
-    text-align: center;
-    margin-top: 20px;
-    color: #1a5276;
-    font-size: 15px;
-}
+        .main-nav {
+            display: flex;
+            list-style: none;
+        }
 
-.guarantee-note i {
-    color: #c19a6b;
-    margin-right: 8px;
-}
+        .main-nav li {
+            position: relative;
+        }
 
-/* Responsif untuk Tablet & Mobile */
-@media (max-width: 768px) {
-    .booking-form {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    .booking-widget {
-        padding: 20px;
-        margin: 30px 20px;
-    }
-}
+        .main-nav li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 10px 18px;
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+
+        .main-nav li a:hover {
+            color: #c19a6b;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #1a5276;
+            cursor: pointer;
+        }
+
+        /* Hero Section with Booking Widget */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            width: 100%;
+            color: white;
+        }
+
+        .hero-text {
+            max-width: 700px;
+            margin-bottom: 50px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            margin-bottom: 15px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            font-weight: 600;
+            color: #f0e6d8;
+        }
+
+        .hero h2 {
+            font-size: 22px;
+            font-weight: 300;
+            color: #f0e6d8;
+            margin-bottom: 25px;
+            max-width: 600px;
+        }
+
+        /* Booking Widget */
+        .booking-widget {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 1000px;
+            margin-top: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .booking-widget h3 {
+            text-align: center;
+            color: #1a5276;
+            margin-bottom: 25px;
+            font-size: 26px;
+            font-weight: 400;
+        }
+
+        .booking-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            align-items: end;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 15px 18px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: white;
+            transition: all 0.3s;
+            height: 52px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #c19a6b;
+            box-shadow: 0 0 0 2px rgba(193, 154, 107, 0.2);
+        }
+
+        .btn-booking {
+            grid-column: 1 / -1;
+            background-color: #1a5276;
+            border: none;
+            color: white;
+            padding: 18px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+        }
+
+        .btn-booking:hover {
+            background-color: #15435f;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 82, 118, 0.3);
+        }
+
+        .guarantee-note {
+            text-align: center;
+            margin-top: 20px;
+            color: #1a5276;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .guarantee-note i {
+            color: #c19a6b;
+            margin-right: 8px;
+        }
+
+        /* Villa Categories */
+        .villa-categories {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+            color: #1a5276;
+            font-weight: 300;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 2px;
+            background-color: #c19a6b;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .villas-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .villa-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .villa-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .villa-image {
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .villa-content {
+            padding: 25px;
+        }
+
+        .villa-content h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #1a5276;
+        }
+
+        .villa-content p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .villa-features {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            color: #555;
+        }
+
+        .feature i {
+            color: #c19a6b;
+            margin-right: 8px;
+            font-size: 18px;
+        }
+
+        .villa-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 22px;
+            color: #1a5276;
+            font-weight: 600;
+        }
+
+        .price span {
+            font-size: 14px;
+            color: #888;
+            font-weight: normal;
+        }
+
+        .btn-details {
+            padding: 10px 20px;
+            background-color: #c19a6b;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .btn-details:hover {
+            background-color: #b08a5c;
+        }
+
+        /* Special Offers */
+        .special-offers {
+            padding: 100px 0;
+            background-color: #f0e6d8;
+        }
+
+        .offers-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .offer-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .offer-badge {
+            background-color: #c19a6b;
+            color: white;
+            padding: 8px 20px;
+            font-weight: 600;
+            display: inline-block;
+            position: absolute;
+            top: 15px;
+            left: 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .offer-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .offer-content {
+            padding: 25px;
+        }
+
+        .offer-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #1a5276;
+        }
+
+        .offer-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .offer-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .offer-price {
+            font-size: 20px;
+            color: #1a5276;
+            font-weight: 600;
+        }
+
+        .offer-price del {
+            font-size: 16px;
+            color: #999;
+            font-weight: normal;
+            margin-right: 5px;
+        }
+
+        /* Services & Facilities */
+        .services {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 40px 25px;
+            background-color: #f9f7f4;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background-color: white;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            color: #c19a6b;
+            margin-bottom: 25px;
+            height: 80px;
+            width: 80px;
+            background-color: rgba(193, 154, 107, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #1a5276;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a5276;
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: #f0e6d8;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: #c19a6b;
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-column p, .footer-column a {
+            color: #d1d9e0;
+            margin-bottom: 12px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: #c19a6b;
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            width: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #c19a6b;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #d1d9e0;
+            font-size: 14px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+            
+            .villas-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+            
+            .main-nav.active {
+                display: flex;
+            }
+            
+            .main-nav li a {
+                padding: 15px 20px;
+                border-bottom: 1px solid #eee;
+                display: block;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero h2 {
+                font-size: 20px;
+            }
+            
+            .booking-form {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .booking-widget {
+                padding: 25px 20px;
+            }
+            
+            .section-title {
+                font-size: 30px;
+            }
+            
+            .villas-container, .offers-container, .services-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 30px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-umbrella-beach"></i> Luxury<span>Villa</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul class="main-nav" id="mainNav">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#villas">Villa Categories</a></li>
+                    <li><a href="#offers">Special Offers</a></li>
+                    <li><a href="#services">Services & Facilities</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with Booking Widget -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>LUXURY VILLA <span>in SEMINYAK</span></h1>
+                <h2>Experience Private Luxury in the Heart of Bali. Your perfect escape with world-class amenities and breathtaking tropical design.</h2>
+            </div>
+            
+            <!-- Booking Widget -->
+            <div class="booking-widget">
+                <h3>Check Availability & Best Rates</h3>
+                <form id="booking-form" class="booking-form">
+                    <div class="form-group">
+                        <label for="check-in"><i class="far fa-calendar-alt"></i> Check In</label>
+                        <input type="date" id="check-in" name="check-in" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="check-out"><i class="far fa-calendar-alt"></i> Check Out</label>
+                        <input type="date" id="check-out" name="check-out" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="adults"><i class="fas fa-user"></i> Adults</label>
+                        <select id="adults" name="adults">
+                            <option value="1">1 Adult</option>
+                            <option value="2" selected>2 Adults</option>
+                            <option value="3">3 Adults</option>
+                            <option value="4">4 Adults</option>
+                            <option value="5">5 Adults</option>
+                            <option value="6">6 Adults</option>
+                            <option value="7">7 Adults</option>
+                            <option value="8">8 Adults</option>
+                            <option value="9">9 Adults</option>
+                            <option value="10">10 Adults</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="children"><i class="fas fa-child"></i> Children</label>
+                        <select id="children" name="children">
+                            <option value="0" selected>No Child</option>
+                            <option value="1">1 Child</option>
+                            <option value="2">2 Children</option>
+                            <option value="3">3 Children</option>
+                            <option value="4">4 Children</option>
+                            <option value="5">5 Children</option>
+                            <option value="6">6 Children</option>
+                            <option value="7">7 Children</option>
+                            <option value="8">8 Children</option>
+                            <option value="9">9 Children</option>
+                            <option value="10">10 Children</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="promo-code"><i class="fas fa-tag"></i> Promo Code</label>
+                        <input type="text" id="promo-code" name="promo-code" placeholder="Enter promo code">
+                    </div>
+                    <button type="submit" class="btn-booking">
+                        <i class="fas fa-search"></i> CHECK AVAILABILITY
+                    </button>
+                </form>
+                <p class="guarantee-note"><i class="fas fa-shield-alt"></i> Best Rate Guaranteed • No Booking Fees • Instant Confirmation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Villa Categories -->
+    <section class="villa-categories" id="villas">
+        <div class="container">
+            <h2 class="section-title">Villa Categories</h2>
+            <div class="villas-container">
+                <!-- Villa 1 -->
+                <div class="villa-card">
+                    <div class="villa-image" style="background-image: url('https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=70')"></div>
+                    <div class="villa-content">
+                        <h3>Lagoon Villa – One Bedroom</h3>
+                        <p>Villa satu kamar dengan kolam pribadi yang langsung terhubung ke laguna utama. Desain modern tropis dengan area lounge pribadi.</p>
+                        <div class="villa-features">
+                            <div class="feature">
+                                <i class="fas fa-user-friends"></i> <span>Max 2 Guests</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-bed"></i> <span>1 Bedroom</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-swimming-pool"></i> <span>Private Pool</span>
+                            </div>
+                        </div>
+                        <div class="villa-price">
+                            <div class="price">IDR 3,500,000 <span>/ night</span></div>
+                            <button class="btn-details">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Villa 2 -->
+                <div class="villa-card">
+                    <div class="villa-image" style="background-image: url('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80')"></div>
+                    <div class="villa-content">
+                        <h3>Executive Suite Pool Villa – Two Bedroom</h3>
+                        <p>Villa eksklusif dengan dua kamar tidur mewah, kolam renang pribadi, dan living area luas. Cocok untuk keluarga atau kelompok kecil.</p>
+                        <div class="villa-features">
+                            <div class="feature">
+                                <i class="fas fa-user-friends"></i> <span>Max 4 Guests</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-bed"></i> <span>2 Bedrooms</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-swimming-pool"></i> <span>Private Pool</span>
+                            </div>
+                        </div>
+                        <div class="villa-price">
+                            <div class="price">IDR 6,200,000 <span>/ night</span></div>
+                            <button class="btn-details">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Villa 3 -->
+                <div class="villa-card">
+                    <div class="villa-image" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80')"></div>
+                    <div class="villa-content">
+                        <h3>Presidential Suite Villa – Three Bedroom</h3>
+                        <p>Villa termewah dengan tiga kamar tidur suite, kolam renang infinity, dan fasilitas premium lengkap. Pengalaman menginap kelas dunia.</p>
+                        <div class="villa-features">
+                            <div class="feature">
+                                <i class="fas fa-user-friends"></i> <span>Max 6 Guests</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-bed"></i> <span>3 Bedrooms</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-swimming-pool"></i> <span>Infinity Pool</span>
+                            </div>
+                        </div>
+                        <div class="villa-price">
+                            <div class="price">IDR 12,500,000 <span>/ night</span></div>
+                            <button class="btn-details">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers -->
+    <section class="special-offers" id="offers">
+        <div class="container">
+            <h2 class="section-title">Special Offers</h2>
+            <div class="offers-container">
+                <!-- Offer 1 -->
+                <div class="offer-card">
+                    <div class="offer-image" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80')">
+                        <div class="offer-badge">Early Bird</div>
+                    </div>
+                    <div class="offer-content">
+                        <h3>Early Bird Promo 45% off</h3>
+                        <p>Book 60 days in advance and enjoy 45% off on all villa categories. Limited rooms available.</p>
+                        <div class="offer-details">
+                            <div class="offer-price">
+                                <del>IDR 6,200,000</del> IDR 3,410,000
+                            </div>
+                            <button class="btn-details">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Offer 2 -->
+                <div class="offer-card">
+                    <div class="offer-image" style="background-image: url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80')">
+                        <div class="offer-badge">Stay Longer</div>
+                    </div>
+                    <div class="offer-content">
+                        <h3>Stay 4 Pay 3 Package</h3>
+                        <p>Stay for 4 nights and pay only for 3 nights. Valid for all villa categories. Minimum 4-night stay required.</p>
+                        <div class="offer-details">
+                            <div class="offer-price">
+                                Save 25%
+                            </div>
+                            <button class="btn-details">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Offer 3 -->
+                <div class="offer-card">
+                    <div class="offer-image" style="background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80')">
+                        <div class="offer-badge">All Inclusive</div>
+                    </div>
+                    <div class="offer-content">
+                        <h3>4 Days 3 Nights Package with Private BBQ Dinner</h3>
+                        <p>All-inclusive package with airport transfer, daily breakfast, and a romantic private BBQ dinner by the pool.</p>
+                        <div class="offer-details">
+                            <div class="offer-price">
+                                From IDR 18,500,000
+                            </div>
+                            <button class="btn-details">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services & Facilities -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Services & Facilities</h2>
+            <div class="services-container">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <h3>24/7 Concierge</h3>
+                    <p>Personalized service to arrange tours, transportation, and reservations.</p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>In-Villa Spa</h3>
+                    <p>Relaxing spa treatments in the privacy of your villa.</p>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Private Chef</h3>
+                    <p>Gourmet dining experience with our in-villa private chef service.</p>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-swimming-pool"></i>
+                    </div>
+                    <h3>Infinity Pool</h3>
+                    <p>Stunning infinity pools with panoramic views of tropical gardens.</p>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Fitness Center</h3>
+                    <p>Fully equipped gym with modern equipment and personal trainers.</p>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3>High-Speed WiFi</h3>
+                    <p>Complimentary high-speed internet throughout the property.</p>
+                </div>
+                
+                <!-- Service 7 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shuttle-van"></i>
+                    </div>
+                    <h3>Airport Transfer</h3>
+                    <p>Complimentary airport pick-up and drop-off service.</p>
+                </div>
+                
+                <!-- Service 8 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-ring"></i>
+                    </div>
+                    <h3>Wedding Services</h3>
+                    <p>Complete wedding planning and celebration services in our venues.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Luxury Villa Seminyak</h3>
+                    <p>Experience unparalleled luxury in the heart of Seminyak, Bali. Our private villas offer the perfect blend of modern comfort and traditional Balinese charm.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Kayu Aya No. 77, Seminyak, Bali 80361</p>
+                    <p><i class="fas fa-phone"></i> +62 361 731 234</p>
+                    <p><i class="fas fa-envelope"></i> reservation@luxuryvillaseminyak.com</p>
+                    <p><i class="fas fa-globe"></i> www.luxuryvillaseminyak.com</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#villas">Villa Categories</a>
+                    <a href="#offers">Special Offers</a>
+                    <a href="#services">Services & Facilities</a>
+                    <a href="#">Gallery</a>
+                    <a href="#contact">Contact Us</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to receive exclusive offers and updates about our villas.</p>
+                    <form id="newsletter-form" style="margin-top: 15px;">
+                        <div class="form-group">
+                            <input type="email" placeholder="Your email address" required style="width: 100%; padding: 12px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white;">
+                        </div>
+                        <button type="submit" class="btn-details" style="width: 100%; margin-top: 10px;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Luxury Villa Seminyak.
