@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Villa in Seminyak - Private Luxury in the Heart of Bali</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f7f4;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #c19a6b;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #1a5276;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #c19a6b;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .hero h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            font-weight: 300;
+            color: #f0e6d8;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+        
+        section h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+            color: #1a5276;
+            font-weight: 300;
+            position: relative;
+        }
+        
+        section h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 2px;
+            background-color: #c19a6b;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Facilities Section */
+        .facilities-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .facility-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .facility-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .facility-icon {
+            background-color: #f0e6d8;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: #c19a6b;
+        }
+        
+        .facility-content {
+            padding: 25px;
+        }
+        
+        .facility-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #1a5276;
+        }
+        
+        /* Benefits Section */
+        .benefits-section {
+            background-color: #f0e6d8;
+        }
+        
+        .benefits-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .benefit-item {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .benefit-icon {
+            font-size: 36px;
+            color: #c19a6b;
+            margin-bottom: 20px;
+            height: 70px;
+            width: 70px;
+            background-color: #f9f7f4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .benefit-item h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #1a5276;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(rgba(26, 82, 118, 0.9), rgba(26, 82, 118, 0.8)), url('https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            color: white;
+        }
+        
+        .cta-section h2:after {
+            background-color: #f0e6d8;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        .cta-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background-color: #c19a6b;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 18px;
+            transition: all 0.3s;
+            border: 2px solid #c19a6b;
+        }
+        
+        .btn:hover {
+            background-color: #b08a5c;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #f0e6d8;
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(240, 230, 216, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a5276;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #f0e6d8;
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #d1d9e0;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: #c19a6b;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #d1d9e0;
+            font-size: 14px;
+        }
+        
+        .disclaimer {
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-left: 4px solid #c19a6b;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            nav ul li {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            
+            .hero {
+                margin-top: 120px;
+                height: auto;
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero h2 {
+                font-size: 24px;
+            }
+            
+            section h2 {
+                font-size: 30px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Luxury<span>Villa</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#facilities">Fasilitas</a></li>
+                    <li><a href="#benefits">Keunggulan</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Luxury Villa in Seminyak</h1>
+            <h2>Experience Private Luxury in the Heart of Bali</h2>
+            <p>Villa pribadi mewah dengan fasilitas lengkap yang menawarkan pengalaman menginap eksklusif di pusat Seminyak. Nikmati kenyamanan akomodasi premium dengan sentuhan desain tropis modern, dikelilingi oleh suasana yang intim dan privat.</p>
+            <a href="#contact" class="btn">Reservasi Sekarang</a>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="facilities">
+        <div class="container">
+            <h2>Villa Facilities</h2>
+            <div class="facilities-container">
+                <!-- Facility 1 -->
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-swimming-pool"></i>
+                    </div>
+                    <div class="facility-content">
+                        <h3>Private Swimming Pool</h3>
+                        <p>Kolam renang pribadi dengan area sun deck yang luas, dilengkapi dengan kursi santai dan payung untuk bersantai menikmati sinar matahari Bali.</p>
+                    </div>
+                </div>
+                
+                <!-- Facility 2 -->
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <div class="facility-content">
+                        <h3>Luxury Bedrooms</h3>
+                        <p>Kamar tidur luas dengan tempat tidur premium, AC, dan desain modern tropis yang menciptakan suasana tenang untuk istirahat maksimal.</p>
+                    </div>
+                </div>
+                
+                <!-- Facility 3 -->
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-bath"></i>
+                    </div>
+                    <div class="facility-content">
+                        <h3>En-suite Bathroom</h3>
+                        <p>Kamar mandi pribadi dengan bathtub dan rain shower serta amenities berkualitas tinggi untuk pengalaman spa pribadi.</p>
+                    </div>
+                </div>
+                
+                <!-- Facility 4 -->
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="facility-content">
+                        <h3>Fully Equipped Kitchen</h3>
+                        <p>Dapur lengkap dengan peralatan modern untuk kebutuhan memasak, dilengkapi dengan peralatan makan premium.</p>
+                    </div>
+                </div>
+                
+                <!-- Facility 5 -->
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-couch"></i>
+                    </div>
+                    <div class="facility-content">
+                        <h3>Spacious Living & Dining Area</h3>
+                        <p>Ruang tamu dan area makan yang luas dengan konsep terbuka dan elegan, menghadap langsung ke kolam renang pribadi.</p>
+                    </div>
+                </div>
+                
+                <!-- Facility 6 -->
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <div class="facility-content">
+                        <h3>High-Speed WiFi</h3>
+                        <p>Internet cepat dan stabil untuk kerja maupun hiburan, menjamin koneksi tanpa gangguan selama menginap.</p>
+                    </div>
+                </div>
+                
+                <!-- Facility 7 -->
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <div class="facility-content">
+                        <h3>Smart TV & Entertainment System</h3>
+                        <p>Sistem hiburan modern dengan Smart TV dan streaming services untuk kenyamanan selama menginap.</p>
+                    </div>
+                </div>
+                
+                <!-- Facility 8 -->
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-parking"></i>
+                    </div>
+                    <div class="facility-content">
+                        <h3>Private Parking Area</h3>
+                        <p>Area parkir pribadi yang aman dan nyaman, dapat menampung hingga dua kendaraan.</p>
+                    </div>
+                </div>
+                
+                <!-- Facility 9 -->
+                <div class="facility-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-broom"></i>
+                    </div>
+                    <div class="facility-content">
+                        <h3>Daily Housekeeping</h3>
+                        <p>Layanan kebersihan harian untuk menjaga kenyamanan dan kerapian villa selama masa menginap.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section" id="benefits">
+        <div class="container">
+            <h2>Key Benefits</h2>
+            <div class="benefits-container">
+                <!-- Benefit 1 -->
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Full Privacy</h3>
+                    <p>Villa pribadi tanpa berbagi fasilitas dengan tamu lain, menjamin keleluasaan dan kenyamanan maksimal.</p>
+                </div>
+                
+                <!-- Benefit 2 -->
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Prime Location – Seminyak</h3>
+                    <p>Dekat dengan beach club, restoran ternama, pusat belanja, dan nightlife terbaik di Bali.</p>
+                </div>
+                
+                <!-- Benefit 3 -->
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-peace"></i>
+                    </div>
+                    <h3>Exclusive & Peaceful Atmosphere</h3>
+                    <p>Lingkungan tenang dengan nuansa tropis yang mewah, jauh dari kebisingan namun tetap strategis.</p>
+                </div>
+                
+                <!-- Benefit 4 -->
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>Luxury Living Experience</h3>
+                    <p>Standar fasilitas dan layanan kelas premium dengan perhatian pada detail untuk kenyamanan maksimal.</p>
+                </div>
+                
+                <!-- Benefit 5 -->
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Ideal for Any Stay</h3>
+                    <p>Cocok untuk honeymoon, liburan keluarga, group stay, dan long stay dengan fasilitas lengkap.</p>
+                </div>
+                
+                <!-- Benefit 6 -->
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-laptop-house"></i>
+                    </div>
+                    <h3>Perfect for Work & Leisure</h3>
+                    <p>Nyaman untuk liburan sekaligus remote working dengan fasilitas pendukung yang memadai.</p>
+                </div>
+                
+                <!-- Benefit 7 -->
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Instagrammable Design</h3>
+                    <p>Desain villa estetik dengan elemen tropis modern, cocok untuk foto dan konten media sosial.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>Reservasi Villa Mewah Anda</h2>
+            <div class="cta-content">
+                <p>Rasakan pengalaman menginap eksklusif di villa pribadi mewah di pusat Seminyak. Hubungi kami sekarang untuk informasi lengkap, ketersediaan tanggal, dan reservasi.</p>
+            </div>
+            <div class="cta-buttons">
+                <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20bertanya%20tentang%20ketersediaan%20Luxury%20Villa%20in%20Seminyak" class="btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Hubungi Admin
+                </a>
+                <a href="mailto:reservation@luxuryvillaseminyak.com?subject=Reservasi Luxury Villa Seminyak" class="btn btn-outline">
+                    <i class="fas fa-calendar-check"></i> Reservasi Sekarang
+                </a>
+            </div>
+            
+            <!-- Disclaimer -->
+            <div class="disclaimer">
+                <p><strong>Penting:</strong> Ketersediaan, harga, dan fasilitas dapat bervariasi tergantung musim dan periode pemesanan. Silakan hubungi kami untuk informasi terbaru dan konfirmasi ketersediaan tanggal yang diinginkan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Luxury Villa Seminyak</h3>
+                    <p>Villa pribadi mewah dengan fasilitas lengkap di lokasi strategis Seminyak, Bali. Menawarkan pengalaman menginap eksklusif dengan privasi maksimal.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Kontak Kami</h3>
+                    <p><i class="fas fa-phone"></i> +62 812 3456 7890</p>
+                    <p><i class="fas fa-envelope"></i> reservation@luxuryvillaseminyak.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Kayu Aya, Seminyak, Bali</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#facilities">Fasilitas</a>
+                    <a href="#benefits">Keunggulan</a>
+                    <a href="#contact">Reservasi</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Luxury Villa in Seminyak. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
